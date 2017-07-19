@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MediumGrayLightText"
+        android:padding="5dp"
+        android:text="@string/weight_unit"/>
+
+    <LinearLayout
+        android:id="@+id/compareLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:elevation="5dp"
+            android:background="@drawable/white_btn"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/realLabel"
+                style="@style/SmallGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="@string/real" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/realData"
+                style="@style/LargeGreenText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                autofit:minTextSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/white_btn"
+            android:elevation="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/estimateLabel"
+                style="@style/SmallGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/estimate" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/estimateData"
+                style="@style/LargeYellowText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                autofit:minTextSize="16sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/white_btn"
+            android:elevation="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/error"
+                style="@style/SmallGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="@string/percent" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/errorData"
+                style="@style/LargeRedText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                autofit:minTextSize="16sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

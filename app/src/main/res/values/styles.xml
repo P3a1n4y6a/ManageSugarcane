@@ -1,0 +1,113 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SmallGrayLightText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/colorFontPrimary</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="SmallGreenDarkText" parent="SmallGrayLightText">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="SmallDarkGrayText" parent="LargeDarkGrayText">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MediumBoldGrayLightText" parent="SmallGrayLightText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="MediumBoldGrayDarkText" parent="MediumBoldGrayLightText">
+        <item name="android:textColor">@color/colorFontPrimaryDark</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="MediumGrayLightText" parent="SmallGrayLightText">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="MediumBoldGrayLightTitle" parent="MediumGrayLightText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MediumWhiteText" parent="MediumGrayLightText">
+        <item name="android:textColor">@color/colorWhiteBackground</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="MediumGreenButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorWhiteBackground</item>
+    </style>
+
+    <style name="MediumOrangeButton" parent="MediumGreenButton">
+        <item name="android:background">@color/colorEditCompareButton</item>
+    </style>
+
+    <style name="MediumRedButton" parent="MediumGreenButton">
+        <item name="android:background">@color/colorCancelButton</item>
+    </style>
+
+    <style name="MediumGreenLightButton" parent="MediumGreenButton">
+        <item name="android:background">@color/colorSearchDateSelect</item>
+        <item name="android:textColor">@color/colorFontPrimary</item>
+    </style>
+
+    <style name="MediumBlackButton" parent="MediumGreenButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/colorShowHideButton</item>
+    </style>
+
+    <style name="LargeDarkGrayText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/colorFontPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="LargeGrayLightText" parent="LargeDarkGrayText">
+        <item name="android:textColor">@color/colorFontPrimary</item>
+    </style>
+
+    <style name="LargeGreenText" parent="LargeDarkGrayText">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LargeYellowText" parent="LargeDarkGrayText">
+        <item name="android:textColor">@color/colorEstimateText</item>
+    </style>
+
+    <style name="LargeRedText" parent="LargeDarkGrayText">
+        <item name="android:textColor">@color/colorCancelButton</item>
+    </style>
+
+    <style name="LargestDarkGrayText" parent="LargeDarkGrayText">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="LargeWhiteTitle" parent="LargeDarkGrayText">
+        <item name="android:textColor">@color/colorSearchDateSelect</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+</resources>

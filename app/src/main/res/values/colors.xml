@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8BC34A</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#DCE775</color>
+    <color name="colorSearchDateSelect">#EAFFD0</color>
+    <color name="colorShowHideButton">#393E46</color>
+    <color name="colorEstimateText">#f0be3f</color>
+    <color name="colorEditCompareButton">#F07B3F</color>
+    <color name="colorCancelButton">#EA5455</color>
+
+    <color name="colorWhiteBackground">#FFFFFF</color>
+    <color name="colorGrayLightBackground">#E4E4E4</color>
+    <color name="colorNonSelected">#EDEFEC</color>
+
+    <color name="colorNonWork">#F6F5F5</color>
+    <color name="colorPrepare">#FAFBD4</color>
+    <color name="colorComplete">#DDFEE4</color>
+
+    <color name="colorFontPrimary">#757575</color>
+    <color name="colorFontPrimaryDark">#373737</color>
+</resources>

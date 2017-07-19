@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">Farm Machine Management</string>
+    <string name="sub_app_name">Sugarcane</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_facebook">Log in with Facebook</string>
+    <string name="login_google_mail">Log in with Google mail</string>
+    <string name="dash_page">Dashboard</string>
+
+    <string name="farmer_page">Farmer Info</string>
+    <string name="survey_queue_page">Survey &amp; Queue</string>
+    <string name="zone_page">Zone</string>
+    <string name="cost_page">Cost Info</string>
+    <string name="profile_page">Profile</string>
+    <string name="logout">Log out</string>
+
+    <string name="company">Contractor company</string>
+    <string name="depart">Department</string>
+    <string name="search_button">Search</string>
+    <string name="name">Name:</string>
+    <string name="farmer_id">Farmer ID:</string>
+    <string name="home">Home address:</string>
+    <string name="farmer_tel">Farmer tel:</string>
+    <string name="chief_name">District chief:</string>
+    <string name="chief_tel">District chief tel:</string>
+
+    <string name="login_button">Login</string>
+    <string name="show_button">Show detail</string>
+    <string name="hide_button">Hide detail</string>
+    <string name="edit_button">Edit</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="change_button">Change</string>
+    <string name="save_button">Save</string>
+    <string name="update_button">Update</string>
+    <string name="compare_button">Compare with estimated cost</string>
+
+    <string name="plant">Farmer\'s Plantation</string>
+    <string name="plant_id">Plant ID:</string>
+    <string name="survey_date">Survey date:</string>
+    <string name="qc">QC:</string>
+    <string name="output">Output:</string>
+    <string name="n_a">N/A</string>
+
+    <string name="zone_id">Zone ID:</string>
+    <string name="cane_company">Cane company</string>
+    <string name="plant_address">Plantation address</string>
+    <string name="plant_info">Plantation Info</string>
+    <string name="explorer_chief">Explorer chief</string>
+    <string name="grade">Grade</string>
+    <string name="qc_output">QC</string>
+    <string name="evaluation">Evaluation Output</string>
+    <string name="cut_id">Cutter ID:</string>
+    <string name="tractor_id">Tractor ID:</string>
+    <string name="total_cut">Total weight and cost event</string>
+    <string name="total_time">Total time and cost event</string>
+    <string name="cut_no">Cutter order no:</string>
+    <string name="tractor_no">Tractor order no:</string>
+    <string name="harvest_date">Harvest date:</string>
+    <string name="tractor_date">Tractor date:</string>
+    <string name="weight">Weight</string>
+    <string name="work_time">Working time</string>
+    <string name="fuel_content">Fuel content</string>
+    <string name="fuel_cost">Fuel cost</string>
+    <string name="repair">Repair</string>
+    <string name="compare_title">Real compare with estimated cost</string>
+
+    <string name="unit">unit</string>
+    <string name="ton_unit">ton</string>
+    <string name="hour_unit">hour</string>
+    <string name="litre_unit">litre</string>
+    <string name="baht_unit">baht</string>
+    <string name="events">Events</string>
+    <string name="fill_fuel">Fill fuel</string>
+    <string name="harvest">Harvest</string>
+
+    <string name="event_detail">Event:</string>
+    <string name="content">Content:</string>
+    <string name="cost">Cost:</string>
+
+    <string name="survey_tap">SURVEY</string>
+    <string name="harvest_tap">HARVEST QUEUE</string>
+    <string name="tractor_tap">TRACTOR QUEUE</string>
+    <string name="harvest_cost">HARVEST</string>
+    <string name="tractor_cost">TRACTOR</string>
+
+    <string name="cost_info">Cost Information</string>
+    <string name="harvest_summary">Real weight and cost summary</string>
+    <string name="tractor_summary">Real time and cost summary</string>
+    <string name="from">From</string>
+    <string name="to">to</string>
+    <string name="weight_unit">Weight (ton)</string>
+    <string name="fuel_content_unit">Fuel_content (litre)</string>
+    <string name="fuel_cost_unit">Fuel cost (baht)</string>
+    <string name="repair_unit">Repair cost (baht)</string>
+    <string name="work_time_unit">Working time (hour)</string>
+    <string name="real">Real</string>
+    <string name="estimate">Estimate</string>
+    <string name="percent">Error</string>
+
+    <string-array name="sort_by">
+        <item>Farmer ID</item>
+        <item>Plant ID</item>
+    </string-array>
+
+    <string-array name="criteria">
+        <item>1. ผลผลิต (ไร่/ปี)</item>
+        <item>2. ความยาวร่องอ้อย (เมตร)</item>
+        <item>3. ระยะห่างระหว่างแถวอ้อย (เมตร)</item>
+        <item>4. ความกว้างของแปลง</item>
+        <item>ข้างแปลง (เมตร)</item>
+        <item>หัวแปลง (เมตร)</item>
+        <item>ท้ายแปลง (เมตร)</item>
+        <item>5. สิ่งกีดขวางแปลง</item>
+        <item>6. พื้นร่อง</item>
+        <item>7. กอตรง</item>
+        <item>8. สภาพพื้นที่แปลงอ้อย</item>
+        <item>9. ร่องอ้อย</item>
+        <item>10. เดินทางสะดวก</item>
+        <item>11. ระยะห่างจากโรงงาน (กิโลเมตร)</item>
+        <item>12. พื้นที่ (ไร่)</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

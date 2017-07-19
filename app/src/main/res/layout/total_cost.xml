@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayLightBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MediumBoldGrayLightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/total_cut" />
+
+        <RelativeLayout
+            android:id="@+id/totalLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/cutNo"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cut_no" />
+
+            <TextView
+                android:id="@+id/cutNoData"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/cutNo" />
+
+            <TextView
+                android:id="@+id/plant"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/cutNo"
+                android:layout_below="@id/cutNo"
+                android:layout_marginTop="5dp"
+                android:text="@string/plant_id" />
+
+            <TextView
+                android:id="@+id/plantData"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/plant"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/plant" />
+
+            <TextView
+                android:id="@+id/harvest"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/cutNo"
+                android:layout_below="@id/plant"
+                android:layout_marginTop="5dp"
+                android:text="@string/harvest_date" />
+
+            <TextView
+                android:id="@+id/harvestDate"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/harvest"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/harvest" />
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/eventTitle"
+        style="@style/MediumBoldGrayLightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/events" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/colorWhiteBackground">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"></ListView>
+    </LinearLayout>
+</LinearLayout>

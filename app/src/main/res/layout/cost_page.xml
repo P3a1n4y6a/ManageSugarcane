@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteBackground"
+            android:elevation="7dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/MediumBoldGrayLightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/harvest_summary" />
+
+            <TextView
+                android:id="@+id/from"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/from" />
+
+            <TextView
+                android:id="@+id/firstDate"
+                style="@style/MediumBoldGrayLightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/from"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@id/from"
+                android:text="20/2/17" />
+
+            <TextView
+                android:id="@+id/to"
+                style="@style/SmallGrayLightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/firstDate"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@id/firstDate"
+                android:text="@string/to" />
+
+            <TextView
+                android:id="@+id/lastDate"
+                style="@style/MediumBoldGrayLightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/to"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@id/to"
+                android:text="21/2/17" />
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="20dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" />
+
+        <Button
+            android:id="@+id/compareButton"
+            style="@style/MediumOrangeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/compare_button" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"></ListView>
+    </LinearLayout>
+</LinearLayout>

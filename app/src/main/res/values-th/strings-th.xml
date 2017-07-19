@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">จัดคิวและให้บริการรถตัดอ้อย</string>
+    <string name="sub_app_name">แอปพลิเคชัน</string>
+    <string name="email">อีเมลล์</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="login_facebook">เข้าสู่ระบบด้วย Facebook</string>
+    <string name="login_google_mail">เข้าสู่ระบบด้วย Google mail</string>
+    <string name="dash_page">หน้าหลัก</string>
+
+    <string name="farmer_page">ข้อมูลชาวไร่</string>
+    <string name="survey_queue_page">การสำรวจและคิว</string>
+    <string name="zone_page">โซน</string>
+    <string name="cost_page">ข้อมูลค่าใช้จ่าย</string>
+    <string name="profile_page">ข้อมูลส่วนตัวของผู้ใช้</string>
+    <string name="logout">ออกจากระบบ</string>
+
+    <string name="company">บริษัทผู้รับเหมา</string>
+    <string name="depart">แผนก</string>
+    <string name="search_button">ค้นหา</string>
+    <string name="name">ชื่อ:</string>
+    <string name="farmer_id">หมายเลข:</string>
+    <string name="home">ที่ี่อยู่อาศัย:</string>
+    <string name="farmer_tel">เบอร์โทรชาวไร่:</string>
+    <string name="chief_name">หัวหน้าตำบล:</string>
+    <string name="chief_tel">เบอร์โทรหัวหน้าตำบล:</string>
+
+    <string name="login_button">เข้าสู่ระบบ</string>
+    <string name="show_button">แสดงรายละเอียด</string>
+    <string name="hide_button">ซ่อนรายละเอียด</string>
+    <string name="edit_button">แก้ไข</string>
+    <string name="cancel_button">ยกเลิก</string>
+    <string name="change_button">เปลี่ยนแปลง</string>
+    <string name="save_button">บันทึก</string>
+    <string name="update_button">อัพเดท</string>
+    <string name="compare_button">เปรียบเทียบราคาประมาณ</string>
+
+    <string name="plant">แปลงทั้งหมดของชาวไร่</string>
+    <string name="plant_id">หมายเลขแปลง:</string>
+    <string name="survey_date">วันที่สำรวจ:</string>
+    <string name="qc">คุณภาพ:</string>
+    <string name="output">ผลผลิต:</string>
+    <string name="n_a">ไม่มีข้อมูล</string>
+
+    <string name="zone_id">หมายเลขโซน:</string>
+    <string name="cane_company">บริษัทอ้อย</string>
+    <string name="plant_address">ที่อยู่ของแปลง</string>
+    <string name="plant_info">ข้อมูลแปลง</string>
+    <string name="explorer_chief">หัวหน้าสำรวจ</string>
+    <string name="grade">เกรด</string>
+    <string name="qc_output">คุณภาพ</string>
+    <string name="evaluation">ผลการประเมิน</string>
+    <string name="cut_id">หมายเลขรถตัด:</string>
+    <string name="tractor_id">หมายเลขรถบรรทุก:</string>
+    <string name="total_cut">น้ำหนักและค่าใช้จ่ายรวม</string>
+    <string name="total_time">เวลาและค่าใช้จ่ายรวม</string>
+    <string name="cut_no">หมายเลขลำดับรถตัด:</string>
+    <string name="tractor_no">หมายเลขลำดับรถบรรทุก:</string>
+    <string name="harvest_date">วันที่ตัดอ้อย:</string>
+    <string name="tractor_date">วันที่บรรทุก:</string>
+    <string name="weight">น้ำหนัก</string>
+    <string name="work_time">ชั่วโมงทำงาน</string>
+    <string name="fuel_content">ปริมาณน้ำมัน</string>
+    <string name="fuel_cost">ค่าน้ำมัน</string>
+    <string name="repair">ซ่อมแซม</string>
+    <string name="compare_title">ราคาจริงเปรียบเทียบกับราคาประมาณ</string>
+
+    <string name="unit">หน่วย</string>
+    <string name="ton_unit">ตัน</string>
+    <string name="hour_unit">ชั่วโมง</string>
+    <string name="litre_unit">ลิตร</string>
+    <string name="baht_unit">บาท</string>
+    <string name="events">เหตุการณ์</string>
+    <string name="fill_fuel">เติมน้ำมัน</string>
+    <string name="harvest">ตัดอ้อย</string>
+
+    <string name="event_detail">เหตุการณ์:</string>
+    <string name="content">ปริมาณ:</string>
+    <string name="cost">ค่าใช้จ่าย:</string>
+
+    <string name="survey_tap">การสำรวจ</string>
+    <string name="harvest_tap">คิวรถตัดอ้อย</string>
+    <string name="tractor_tap">คิวรถแทรกเตอร์</string>
+    <string name="harvest_cost">รถตัดอ้อย</string>
+    <string name="tractor_cost">รถแทรกเตอร์</string>
+
+    <string name="cost_info">ข้อมูลค่าใช้จ่าย</string>
+    <string name="harvest_summary">สรุปน้ำหนักและค่าใช้จ่ายจริงทั้งหมด</string>
+    <string name="tractor_summary">สรุปชั่วโมงและค่าใช้จ่ายจริงทั้งหมด</string>
+    <string name="from">จาก</string>
+    <string name="to">ถึง</string>
+    <string name="weight_unit">น้ำหนัก (ตัน)</string>
+    <string name="fuel_content_unit">ปริมาณน้ำมัน (ลิตร)</string>
+    <string name="fuel_cost_unit">ราคาน้ำมัน (บาท)</string>
+    <string name="repair_unit">ค่าซ่อมแซม (บาท)</string>
+    <string name="work_time_unit">ชั่วโมงทำงาน (ชั่วโมง)</string>
+    <string name="real">ราคาจริง</string>
+    <string name="estimate">ราคาประเมิน</string>
+    <string name="percent">ความคลาดเคลื่อน</string>
+
+    <string-array name="sort_by">
+        <item>หมายเลขชาวไร่</item>
+        <item>หมายเลขแปลง</item>
+    </string-array>
+
+    <string-array name="criteria">
+        <item>1. ผลผลิต (ไร่/ปี)</item>
+        <item>2. ความยาวร่องอ้อย (เมตร)</item>
+        <item>3. ระยะห่างระหว่างแถวอ้อย (เมตร)</item>
+        <item>4. ความกว้างของแปลง</item>
+        <item>ข้างแปลง (เมตร)</item>
+        <item>หัวแปลง (เมตร)</item>
+        <item>ท้ายแปลง (เมตร)</item>
+        <item>5. สิ่งกีดขวางแปลง</item>
+        <item>6. พื้นร่อง</item>
+        <item>7. กอตรง</item>
+        <item>8. สภาพพื้นที่แปลงอ้อย</item>
+        <item>9. ร่องอ้อย</item>
+        <item>10. เดินทางสะดวก</item>
+        <item>11. ระยะห่างจากโรงงาน (กิโลเมตร)</item>
+        <item>12. พื้นที่ (ไร่)</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

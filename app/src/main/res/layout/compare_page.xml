@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorGrayLightBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteBackground"
+        android:elevation="7dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MediumBoldGrayLightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/compare_title" />
+
+        <TextView
+            android:id="@+id/from"
+            style="@style/SmallGrayLightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/from" />
+
+        <TextView
+            android:id="@+id/firstDate"
+            style="@style/MediumBoldGrayLightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/from"
+            android:layout_marginStart="5dp"
+            android:layout_toRightOf="@id/from"
+            android:text="20/2/17" />
+
+        <TextView
+            android:id="@+id/to"
+            style="@style/SmallGrayLightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/firstDate"
+            android:layout_marginStart="5dp"
+            android:layout_toRightOf="@id/firstDate"
+            android:text="@string/to" />
+
+        <TextView
+            android:id="@+id/lastDate"
+            style="@style/MediumBoldGrayLightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/to"
+            android:layout_marginStart="5dp"
+            android:layout_toRightOf="@id/to"
+            android:text="21/2/17" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayLightBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</LinearLayout>

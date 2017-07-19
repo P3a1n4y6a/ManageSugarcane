@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_farmer"
+            android:icon="@drawable/ic_farmer"
+            android:title="@string/farmer_page" />
+        <item
+            android:id="@+id/nav_survey_queue"
+            android:icon="@drawable/ic_survey"
+            android:title="@string/survey_queue_page" />
+        <item
+            android:id="@+id/nav_zone"
+            android:icon="@drawable/ic_zone"
+            android:title="@string/zone_page" />
+        <item
+            android:id="@+id/nav_cost"
+            android:icon="@drawable/ic_cost"
+            android:title="@string/cost_page" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout"/>
+    </group>
+
+</menu>
