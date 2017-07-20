@@ -82,7 +82,6 @@
                 android:maxLines="1"
                 autofit:minTextSize="16sp" />
 
-
         </LinearLayout>
 
         <LinearLayout

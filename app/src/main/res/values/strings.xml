@@ -9,6 +9,8 @@
 
     <string name="farmer_page">Farmer Info</string>
     <string name="survey_queue_page">Survey &amp; Queue</string>
+    <string name="edit_farmer_page">Edit farmer information</string>
+    <string name="edit_survey_page">Edit survey queue</string>
     <string name="zone_page">Zone</string>
     <string name="cost_page">Cost Info</string>
     <string name="profile_page">Profile</string>
@@ -20,6 +22,11 @@
     <string name="name">Name:</string>
     <string name="farmer_id">Farmer ID:</string>
     <string name="home">Home address:</string>
+    <string name="address">Home:</string>
+    <string name="sub_district">Sub-district:</string>
+    <string name="district">District:</string>
+    <string name="province">Province:</string>
+    <string name="zip_code">Zip code:</string>
     <string name="farmer_tel">Farmer tel:</string>
     <string name="chief_name">District chief:</string>
     <string name="chief_tel">District chief tel:</string>

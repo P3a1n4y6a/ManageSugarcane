@@ -10,6 +10,8 @@
 
     <string name="farmer_page">ข้อมูลชาวไร่</string>
     <string name="survey_queue_page">การสำรวจและคิว</string>
+    <string name="edit_farmer_page">แก้ไขข้อมูลชาวไร่</string>
+    <string name="edit_survey_page">แก้ไขการสำรวจ</string>
     <string name="zone_page">โซน</string>
     <string name="cost_page">ข้อมูลค่าใช้จ่าย</string>
     <string name="profile_page">ข้อมูลส่วนตัวของผู้ใช้</string>
@@ -20,7 +22,12 @@
     <string name="search_button">ค้นหา</string>
     <string name="name">ชื่อ:</string>
     <string name="farmer_id">หมายเลข:</string>
-    <string name="home">ที่ี่อยู่อาศัย:</string>
+    <string name="home">ที่อยู่</string>
+    <string name="address">บ้านเลขที่-ถนน:</string>
+    <string name="sub_district">ตำบล:</string>
+    <string name="district">อำเภอ:</string>
+    <string name="province">จังหวัด:</string>
+    <string name="zip_code">รหัสไปรษณีย์:</string>
     <string name="farmer_tel">เบอร์โทรชาวไร่:</string>
     <string name="chief_name">หัวหน้าตำบล:</string>
     <string name="chief_tel">เบอร์โทรหัวหน้าตำบล:</string>
