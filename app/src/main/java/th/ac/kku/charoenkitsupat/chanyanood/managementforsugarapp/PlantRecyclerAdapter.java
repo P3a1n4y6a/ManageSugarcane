@@ -1,23 +1,33 @@
 package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
 
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Panya on 26/5/2560.
  */
 
 public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdapter.ViewHolder> {
-    private String[][] data;
-    private static String plant, date, qc, output;
+    private ArrayList<PlantModel> plantList;
     private MyTools tools = new MyTools();
 
-    PlantRecyclerAdapter(String[][] data) {
-        this.data = data;
+    PlantRecyclerAdapter(ArrayList<PlantModel> plantList) {
+        this.plantList = plantList;
+        checkList(plantList);
+    }
+
+    void checkList(ArrayList<PlantModel> plantList){
+        for(int i = 0; i < plantList.size(); i++) {
+            Log.d("PlantRe", plantList.get(i).getId());
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -39,11 +49,11 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    plant = data[position][1];
-                    date = data[position][2];
-                    qc = data[position][3];
-                    output = data[position][4];
-                    tools.replaceFragment(itemView, new SurveyMoreDetail());
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("FromPlantRecycler", position);
+                    SurveyMoreDetail surveyMoreDetail = new SurveyMoreDetail();
+                    surveyMoreDetail.setArguments(bundle);
+                    tools.replaceFragment(itemView, surveyMoreDetail);
                 }
             });
         }
@@ -57,31 +67,15 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        tools.setCardColor(viewHolder.cardView, data[i][0]);
-        viewHolder.itemPlant.setText(data[i][1]);
-        viewHolder.itemDate.setText(data[i][2]);
-        viewHolder.itemQC.setText(data[i][3]);
-        viewHolder.itemOutput.setText(data[i][4]);
+        tools.setCardColor(viewHolder.cardView, "no_queue");
+        viewHolder.itemPlant.setText(plantList.get(i).getId());
+        viewHolder.itemDate.setText(plantList.get(i).getStart_survey_date());
+        viewHolder.itemQC.setText(plantList.get(i).getSurvey_status());
+        viewHolder.itemOutput.setText(plantList.get(i).getOutput());
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
-    }
-
-    public static String getPlantId() {
-        return plant;
-    }
-
-    public static String getDate() {
-        return date;
-    }
-
-    public static String getQC() {
-        return qc;
-    }
-
-    public static String getOutput() {
-        return output;
+        return plantList.size();
     }
 }

@@ -1,6 +1,5 @@
 package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,8 +47,8 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         getActivity().setTitle(R.string.survey_queue_page);
 
         specifyLocationOnMap();
-        initPreviousData();
-        initButton();
+        //initPreviousData();
+        //initButton();
         return surveyMoreDetailView;
     }
 
@@ -85,7 +84,7 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         });
     }
 
-    public void initPreviousData(){
+    /*public void initPreviousData(){
         plantId = (TextView) surveyMoreDetailView.findViewById(R.id.plantData);
         plantId.setText(PlantRecyclerAdapter.getPlantId());
     }
@@ -106,7 +105,7 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         output.setText(PlantRecyclerAdapter.getOutput());
 
         showBtn.setOnClickListener(this);
-    }
+    }*/
 
     @Override
     public void onClick(View v) {

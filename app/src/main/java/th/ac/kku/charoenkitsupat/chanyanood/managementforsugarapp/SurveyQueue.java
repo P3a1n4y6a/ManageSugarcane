@@ -61,7 +61,7 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new PlantRecyclerAdapter(data);
+        //adapter = new PlantRecyclerAdapter(data);
         recyclerView.setAdapter(adapter);
     }
 

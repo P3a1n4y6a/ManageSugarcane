@@ -1,73 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parentMoreDetail"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhiteBackground"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/SmallGreenDarkText"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/editBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/name" />
-
-    <TextView
-        android:id="@+id/nameData"
-        style="@style/MediumGrayLightText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:id="@+id/id"
-        style="@style/SmallGreenDarkText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/farmer_id" />
-
-    <TextView
-        android:id="@+id/idData"
-        style="@style/MediumGrayLightText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp" />
-
-
-    <Button
-        android:id="@+id/showButton"
-        style="@style/MediumBlackButton"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="10dp"
-        android:text="@string/show_button" />
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="@color/colorEditCompareButton"
+        app:fabSize="normal" />
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/parentMoreDetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorWhiteBackground"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/blankLayout"
+            <TextView
+                android:id="@+id/name"
+                style="@style/SmallGreenDarkText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical">
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/name" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/nameData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/id"
+                style="@style/SmallGreenDarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/farmer_id" />
+
+            <TextView
+                android:id="@+id/idData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/home"
+                style="@style/SmallGreenDarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/home" />
+
+            <TextView
+                android:id="@+id/homeData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/farmerTel"
+                style="@style/SmallGreenDarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/farmer_tel" />
+
+            <TextView
+                android:id="@+id/farmerTelData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/chiefName"
+                style="@style/SmallGreenDarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/chief_name" />
+
+            <TextView
+                android:id="@+id/chiefNameData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/chiefTel"
+                style="@style/SmallGreenDarkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/chief_tel" />
+
+            <TextView
+                android:id="@+id/chiefTelData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:id="@+id/title"
@@ -86,5 +147,6 @@
                 android:padding="5dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
