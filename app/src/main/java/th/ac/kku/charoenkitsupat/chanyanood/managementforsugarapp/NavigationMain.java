@@ -1,5 +1,6 @@
 package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -88,14 +90,13 @@ public class NavigationMain extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        Log.d("naviagtion ", "onBack");
     }
 
     public void enableViews(boolean enable) {
         if(enable) {
-            // Remove hamburger
-            toggle.setDrawerIndicatorEnabled(false);
-            // Show back button
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toggle.setDrawerIndicatorEnabled(false);// Remove hamburger
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);// Show back button
             // when DrawerToggle is disabled i.e. setDrawerIndicatorEnabled(false), navigation icon
             // clicks are disabled i.e. the UP button will not work.
             // We need to add a listener, as in below, so DrawerToggle will forward
@@ -105,7 +106,8 @@ public class NavigationMain extends AppCompatActivity
                     @Override
                     public void onClick(View v) {
                         // Doesn't have to be onBackPressed
-                        Log.d("Navigator", "wowww");
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                         onBackPressed();
                     }
                 });

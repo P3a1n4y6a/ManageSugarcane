@@ -38,9 +38,7 @@ public class FarmerMoreDetail extends Fragment {
     ArrayList<PlantModel> plantList;
     MyTools tools = new MyTools();
     TextView id, name, home, tel, districtChief, districtChiefTel;
-    int[] viewId = {R.id.nameData, R.id.idData, R.id.homeData, R.id.farmerTelData
-            , R.id.chiefNameData, R.id.chiefTelData};
-
+    String[] sendToEdit = new String[10];
 
     @Nullable
     @Override
@@ -60,7 +58,7 @@ public class FarmerMoreDetail extends Fragment {
         editBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putStringArray("FromMoreDetail", tools.getAllData(viewId, farmerMoreView));
+                bundle.putStringArray("FromFarmerMoreDetail", sendToEdit);
                 FarmerEditDetail farmerEditDetail = new FarmerEditDetail();
                 farmerEditDetail.setArguments(bundle);
                 tools.replaceFragment(v, farmerEditDetail);
@@ -84,16 +82,26 @@ public class FarmerMoreDetail extends Fragment {
             districtChief = (TextView) farmerMoreView.findViewById(R.id.chiefNameData);
             districtChiefTel = (TextView) farmerMoreView.findViewById(R.id.chiefTelData);
 
-            String fullAddress = jsonObject.getString("address") + " " +
-                    jsonObject.getString("sub_district") + " " + jsonObject.getString("district") + " " +
-                    jsonObject.getString("province") + " " + jsonObject.getString("zip_code");
+            sendToEdit[0] = jsonObject.getString("FARMER_ID");
+            sendToEdit[1] = jsonObject.getString("full_name");
+            sendToEdit[2] = jsonObject.getString("address");
+            sendToEdit[3] = jsonObject.getString("sub_district");
+            sendToEdit[4] = jsonObject.getString("district");
+            sendToEdit[5] = jsonObject.getString("province");
+            sendToEdit[6] = jsonObject.getString("zip_code");
+            sendToEdit[7] = "xxxxxxxxxx"; // Add in api
+            sendToEdit[8] = jsonObject.getString("district_chief");
+            sendToEdit[9] = jsonObject.getString("district_chief_tel");
 
-            id.setText(jsonObject.getString("FARMER_ID"));
-            name.setText(jsonObject.getString("full_name"));
+            String fullAddress = sendToEdit[2] + " " + sendToEdit[3] + " " + sendToEdit[4] +
+                    " " + sendToEdit[5] + " " + sendToEdit[6];
+
+            id.setText(sendToEdit[0]);
+            name.setText(sendToEdit[1]);
             home.setText(fullAddress);
-            tel.setText("xxxxxxxxxx"); // Add in api
-            districtChief.setText(jsonObject.getString("district_chief"));
-            districtChiefTel.setText(jsonObject.getString("district_chief_tel"));
+            tel.setText(sendToEdit[7]);
+            districtChief.setText(sendToEdit[8]);
+            districtChiefTel.setText(sendToEdit[9]);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -156,7 +164,7 @@ public class FarmerMoreDetail extends Fragment {
                         plantList.add(new PlantModel(jsonObject.getString("PLANT_ID"),
                                 jsonObject.getString("start_survey_date"),
                                 jsonObject.getString("survey_status"),
-                                "Unknown"));//Info of each farmer
+                                "Na"));//Info of each farmer
                     }
                     initRecycler(); //Create multiple cards
                 }

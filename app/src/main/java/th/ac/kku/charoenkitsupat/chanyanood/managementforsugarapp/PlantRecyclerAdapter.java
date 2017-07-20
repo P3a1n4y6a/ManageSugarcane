@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
         CardView cardView;
         TextView itemPlant;
         TextView itemDate;
-        TextView itemQC;
+        ImageView itemQC;
         TextView itemOutput;
 
         ViewHolder(final View itemView) {
@@ -42,7 +43,7 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
             cardView = (CardView) itemView.findViewById(R.id.cardView);
             itemPlant = (TextView) itemView.findViewById(R.id.plantData);
             itemDate = (TextView) itemView.findViewById(R.id.dateData);
-            itemQC = (TextView) itemView.findViewById(R.id.qcData);
+            itemQC = (ImageView) itemView.findViewById(R.id.qcImage);
             itemOutput = (TextView) itemView.findViewById(R.id.outputData);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +68,10 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        tools.setCardColor(viewHolder.cardView, "no_queue");
+        tools.setCardColor(viewHolder.cardView, plantList.get(i).getSurvey_status());
         viewHolder.itemPlant.setText(plantList.get(i).getId());
         viewHolder.itemDate.setText(plantList.get(i).getStart_survey_date());
-        viewHolder.itemQC.setText(plantList.get(i).getSurvey_status());
+        tools.setSymbolQC(viewHolder.itemQC, "-");
         viewHolder.itemOutput.setText(plantList.get(i).getOutput());
     }
 
