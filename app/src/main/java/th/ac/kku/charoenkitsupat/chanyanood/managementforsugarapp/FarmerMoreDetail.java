@@ -122,7 +122,7 @@ public class FarmerMoreDetail extends Fragment {
 
         @Override
         protected String doInBackground(Object... params) {
-            final String URL = "http://188.166.191.60/api/v1/plant";
+            final String URL = "http://188.166.191.60/api/v1/plant/PlantList?FARMER_ID=" + sendToEdit[0];
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -152,7 +152,7 @@ public class FarmerMoreDetail extends Fragment {
         @Override
         protected void onPostExecute(String data) {
             super.onPostExecute(data);
-            Log.d("Plant", data);
+            Log.d("PlantFarmer", data);
             saveToSharedPrefs(data);
 
             try {

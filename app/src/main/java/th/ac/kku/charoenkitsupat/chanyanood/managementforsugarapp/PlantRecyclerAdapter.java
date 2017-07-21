@@ -51,7 +51,7 @@ public class PlantRecyclerAdapter extends RecyclerView.Adapter<PlantRecyclerAdap
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("FromPlantRecycler", position);
+                    bundle.putString("FromPlantRecycler", plantList.get(position).getId());
                     SurveyMoreDetail surveyMoreDetail = new SurveyMoreDetail();
                     surveyMoreDetail.setArguments(bundle);
                     tools.replaceFragment(itemView, surveyMoreDetail);

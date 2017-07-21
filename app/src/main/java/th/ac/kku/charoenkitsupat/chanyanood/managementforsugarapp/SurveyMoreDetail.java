@@ -1,9 +1,13 @@
 package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Panya on 27/5/2560.
@@ -45,9 +55,9 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         ((NavigationMain) getActivity()).getSupportActionBar().show();
         ((NavigationMain)getActivity()).enableViews(true);
         getActivity().setTitle(R.string.survey_queue_page);
-
         specifyLocationOnMap();
-        //initPreviousData();
+
+        new OkHttpHandler().execute();
         //initButton();
         return surveyMoreDetailView;
     }
@@ -62,11 +72,11 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         }
     }
 
-    public String[] getStringXML(){
+    /*public String[] getStringXML(){
         // This is only criteria without evaluation in each criteria
         String[] criteria;
         return criteria = getResources().getStringArray(R.array.criteria);
-    }
+    }*/
 
     public void specifyLocationOnMap(){
         FragmentManager fragMan = getChildFragmentManager();
@@ -84,12 +94,83 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
         });
     }
 
-    /*public void initPreviousData(){
-        plantId = (TextView) surveyMoreDetailView.findViewById(R.id.plantData);
-        plantId.setText(PlantRecyclerAdapter.getPlantId());
+    // Call library to connect api with http request protocol.
+    private class OkHttpHandler extends AsyncTask<Object, Object, String> {
+        private Context context;
+        String cookie = loadPreferencesCookie(); // cookie is token + laravel-session header
+        String authen = loadPreferencesAuthorization(); // token is header
+
+        @Override
+        protected String doInBackground(Object... params) {
+            String PLANT_ID = getArguments().getString("FromPlantRecycler"); // Plant id from survey queue
+            Log.d("survey id", PLANT_ID);
+            final String URL = "http://188.166.191.60/api/v1/survey?PLANT_ID=" + PLANT_ID;
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            Request.Builder builder = new Request.Builder(); // Create request
+            Request request = builder.url(URL)
+                    .header("Authorization", authen)
+                    .addHeader("Cookie", cookie)
+                    .build();
+
+            try {
+                // Call newCall() to connect server, return Call class then call execute()
+                Response response = okHttpClient.newCall(request).execute(); // execute() returns Response
+                // When finish sending and receiving data with server, check result
+                if (response.isSuccessful()) {
+                    return response.body().string(); // Read data
+                } else {
+                    return "Not Success - code : " + response.code();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        /*
+        * Use result from doInBackground()
+        * */
+        @Override
+        protected void onPostExecute(String data) {
+            super.onPostExecute(data);
+            Log.d("SurveyDetail", data);
+            //saveToSharedPrefs(data);
+
+            /*try {
+                if (data != null) {
+                    JSONArray jsonArray = new JSONArray(data); //Convert string to JSON
+                    plantList = new ArrayList<>();
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i); // get JSON at index
+                        plantList.add(new PlantModel(jsonObject.getString("PLANT_ID"),
+                                jsonObject.getString("start_survey_date"),
+                                jsonObject.getString("survey_status"),
+                                "Na"));//Info of each farmer
+                    }
+                    initRecycler(); //Create multiple cards
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
+        }
     }
 
-    public void initButton(){
+    private String loadPreferencesAuthorization() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String authen = preferences.getString("authen", "Not found");
+        return authen;
+    }
+
+    private String loadPreferencesCookie() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String cookie = preferences.getString("cookie", "Not found");
+        String[] separatedData = cookie.split(";");
+        cookie = separatedData[0];
+        return cookie;
+    }
+    /*public void initButton(){
         showBtn = (Button) surveyMoreDetailView.findViewById(R.id.showButton);
 
         parentLayout = (LinearLayout) surveyMoreDetailView.findViewById(R.id.blankLayout);
@@ -118,8 +199,7 @@ public class SurveyMoreDetail extends Fragment implements View.OnClickListener {
                     parentLayout.addView(insertView, parentLayout.getChildCount());
                     //now you must initialize your list view
                     ListView listView = (ListView)insertView.findViewById(R.id.listView); //survey_show_detail
-                    listView.setAdapter(new CriteriaListAdapter(getActivity(), getStringXML()));
-
+                    //listView.setAdapter(new CriteriaListAdapter(getActivity(), getStringXML()));
                     editBtn = (Button) surveyMoreDetailView.findViewById(R.id.editButton);
                     editBtn.setOnClickListener(this);
                 } else {
