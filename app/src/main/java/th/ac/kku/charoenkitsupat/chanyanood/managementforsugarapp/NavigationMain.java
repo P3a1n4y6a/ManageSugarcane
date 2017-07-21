@@ -70,7 +70,7 @@ public class NavigationMain extends AppCompatActivity
             TextView name = (TextView) headerLayout.findViewById(R.id.name);
             TextView email = (TextView) headerLayout.findViewById(R.id.email);
 
-            name.setText("Contractor no. " + jsonObject.getString("CONTRACTOR_NO"));
+            name.setText(jsonObject.getString("full_name"));
             email.setText(jsonObject.getString("email"));
         } catch (JSONException e) {
             e.printStackTrace();

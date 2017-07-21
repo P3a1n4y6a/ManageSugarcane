@@ -55,6 +55,7 @@
     <string name="plant_address">Plantation address</string>
     <string name="plant_info">Plantation Info</string>
     <string name="explorer_chief">Explorer chief</string>
+    <string name="explorer_chief_tel">Explorer tel</string>
     <string name="grade">Grade</string>
     <string name="qc_output">QC</string>
     <string name="evaluation">Evaluation Output</string>

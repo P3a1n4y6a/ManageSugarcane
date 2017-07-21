@@ -162,7 +162,7 @@ public class LoginPage extends Fragment {
 
         @Override
         protected String doInBackground(Object... params) {
-            final String URL = "http://188.166.191.60/api/v1/authenticate/profile";
+            final String URL = "http://188.166.191.60/api/v1/authenticate/get_account_profile?email=" + email_str;
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -198,7 +198,7 @@ public class LoginPage extends Fragment {
                 JSONArray jsonArray = new JSONArray(data);
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 Toast.makeText(getActivity(), getResources().getString(R.string.login_success) +
-                        jsonObject.getString("CONTRACTOR_NO"), Toast.LENGTH_SHORT).show(); // Change to name
+                        jsonObject.getString("full_name"), Toast.LENGTH_SHORT).show(); // Change to name
             } catch (JSONException e) {
                 e.printStackTrace();
             }

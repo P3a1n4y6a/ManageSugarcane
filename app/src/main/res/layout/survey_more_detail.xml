@@ -1,84 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorGrayLightBackground"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/map_frag"
-        class="com.google.android.gms.maps.SupportMapFragment"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:id="@+id/gradeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
 
-            <RelativeLayout
-                android:id="@+id/layoutLabel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@color/colorWhiteBackground"
+                android:padding="5dp"
+                android:background="@drawable/white_btn"
                 android:elevation="5dp"
-                android:paddingBottom="10dp">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/gradeData"
+                    style="@style/LargeGrayLightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/grade"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/grade" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_btn"
+                android:elevation="5dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/qcData"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_dash"/>
+
+                <TextView
+                    android:id="@+id/qc"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qc_output" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map_frag"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end|top"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_edit"
+                app:backgroundTint="@color/colorEditCompareButton"
+                app:fabSize="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/plantLabel"
-                    style="@style/MediumGrayLightText"
+                    style="@style/SmallGreenDarkText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:paddingTop="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/plant_id" />
 
                 <TextView
-                    android:id="@+id/plantData"
+                    android:id="@+id/plantId"
                     style="@style/MediumGrayLightText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/plantLabel"
-                    android:paddingStart="10dp"
-                    android:paddingTop="10dp" />
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/nameLabel"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@string/name" />
 
                 <TextView
                     android:id="@+id/nameData"
                     style="@style/SmallGrayLightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/plantLabel"
-                    android:paddingBottom="10dp"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:text="นายอู่ ทอง" />
+                    android:layout_marginStart="10dp" />
 
-                <Button
-                    android:id="@+id/showButton"
-                    style="@style/MediumBlackButton"
-                    android:layout_width="130dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@id/nameData"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/show_button" />
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/plantAddress"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/plant_address" />
 
-            <LinearLayout
-                android:id="@+id/blankLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/plantAddressData"
+                    style="@style/MediumGrayLightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
 
+                <TextView
+                    android:id="@+id/outputLabel"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/output" />
+
+                <TextView
+                    android:id="@+id/outputData"
+                    style="@style/MediumGrayLightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/survey_date" />
+
+                <TextView
+                    android:id="@+id/dateData"
+                    style="@style/MediumGrayLightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/explorer"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explorer_chief" />
+
+                <TextView
+                    android:id="@+id/explorerName"
+                    style="@style/MediumGrayLightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/explorerLabel"
+                    style="@style/SmallGreenDarkText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explorer_chief_tel" />
+
+                <TextView
+                    android:id="@+id/explorerTel"
+                    style="@style/MediumGrayLightText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/LargeWhiteTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:padding="15dp"
+                    android:text="@string/evaluation" />
+
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+
+
