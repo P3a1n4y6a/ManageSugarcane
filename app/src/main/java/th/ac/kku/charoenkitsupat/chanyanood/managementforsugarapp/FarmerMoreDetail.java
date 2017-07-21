@@ -89,7 +89,7 @@ public class FarmerMoreDetail extends Fragment {
             sendToEdit[4] = jsonObject.getString("district");
             sendToEdit[5] = jsonObject.getString("province");
             sendToEdit[6] = jsonObject.getString("zip_code");
-            sendToEdit[7] = "xxxxxxxxxx"; // Add in api
+            sendToEdit[7] = jsonObject.getString("tel_no");
             sendToEdit[8] = jsonObject.getString("district_chief");
             sendToEdit[9] = jsonObject.getString("district_chief_tel");
             sendToEdit[10] = jsonObject.getString("email");
