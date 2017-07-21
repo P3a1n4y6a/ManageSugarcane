@@ -37,7 +37,7 @@ public class FarmerEditDetail extends Fragment implements View.OnClickListener{
     public void initPreviousData(){
         message = getArguments().getStringArray("FromFarmerMoreDetail");
         TextView textData;
-        int[] viewId = {R.id.nameData, R.id.idData, R.id.addressData, R.id.subDtName, R.id.districtName,
+        int[] viewId = {R.id.idData, R.id.nameData,  R.id.addressData, R.id.subDtName, R.id.districtName,
                 R.id.provinceName, R.id.zipCode, R.id.farmerTelData, R.id.chiefNameData, R.id.chiefTelData};
         for(int i = 0; i < viewId.length; i++){
             textData = (TextView) editFarmerView.findViewById(viewId[i]);
