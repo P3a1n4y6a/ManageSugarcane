@@ -38,7 +38,7 @@ public class FarmerMoreDetail extends Fragment {
     ArrayList<PlantModel> plantList;
     MyTools tools = new MyTools();
     TextView id, name, home, tel, districtChief, districtChiefTel;
-    String[] sendToEdit = new String[10];
+    String[] sendToEdit = new String[11];
 
     @Nullable
     @Override
@@ -92,6 +92,7 @@ public class FarmerMoreDetail extends Fragment {
             sendToEdit[7] = "xxxxxxxxxx"; // Add in api
             sendToEdit[8] = jsonObject.getString("district_chief");
             sendToEdit[9] = jsonObject.getString("district_chief_tel");
+            sendToEdit[10] = jsonObject.getString("email");
 
             String fullAddress = sendToEdit[2] + " " + sendToEdit[3] + " " + sendToEdit[4] +
                     " " + sendToEdit[5] + " " + sendToEdit[6];

@@ -5,6 +5,8 @@
     <string name="password">Password</string>
     <string name="login_facebook">Log in with Facebook</string>
     <string name="login_google_mail">Log in with Google mail</string>
+    <string name="login_failed">"Login failed,please check email and password"</string>
+    <string name="login_success">Hi,</string>
     <string name="dash_page">Dashboard</string>
 
     <string name="farmer_page">Farmer Info</string>

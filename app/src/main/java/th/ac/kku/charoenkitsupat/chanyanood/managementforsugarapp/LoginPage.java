@@ -10,18 +10,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dx.dxloadingbutton.lib.LoadingButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,66 +33,72 @@ import okhttp3.Response;
  * Created by Panya on 25/5/2560.
  */
 
-public class LoginPage extends Fragment implements View.OnClickListener {
+public class LoginPage extends Fragment {
     View loginView;
-    Button loginBtn;
+    //Button loginBtn;
+    LoadingButton loginBtn;
     EditText email, password;
     String email_str, password_str;
-
-    private static final String app_pref = "app_pref";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         loginView = inflater.inflate(R.layout.login_page, container, false);
-        ((NavigationMain)getActivity()).getSupportActionBar().hide();
+        ((NavigationMain) getActivity()).getSupportActionBar().hide();
 
         email = (EditText) loginView.findViewById(R.id.userMail);
         password = (EditText) loginView.findViewById(R.id.userKey);
 
-        loginBtn = (Button) loginView.findViewById(R.id.login);
-        loginBtn.setOnClickListener(this);
+        loginBtn = (LoadingButton) loginView.findViewById(R.id.login);
+        //while login failed, reset view to button with animation
+        loginBtn.setResetAfterFailed(true);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                email_str = email.getText().toString();
+                password_str = password.getText().toString();
+                loginBtn.startLoading();
+                new OkHttpHandler().execute();
+            }
+        });
+        //loginBtn = (Button) loginView.findViewById(R.id.login);
+        //loginBtn.setOnClickListener(this);
         return loginView;
     }
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
-    @Override
+
+    /*@Override
     public void onClick(View v) {
-        //((NavigationMain)getActivity()).loadFragment("DashboardPage");
         email_str = email.getText().toString();
         password_str = password.getText().toString();
         new OkHttpHandler().execute();
-    }
+    }*/
 
     // Call library to connect api with http request protocol.
-    private class OkHttpHandler extends AsyncTask<Object, Object, List<String>> {
+    private class OkHttpHandler extends AsyncTask<Object, Object, String> {
         OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody;
+        Request request;
+        Response response;
 
         @Override
-        protected List<String> doInBackground(Object... params) {
+        protected String doInBackground(Object... params) {
             String url = "http://188.166.191.60/api/v1/authenticate";
-            RequestBody requestBody = new MultipartBody.Builder()
+            requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
                     .addFormDataPart("email", email_str)
                     .addFormDataPart("password", password_str)
                     .build();
 
             // Request type with POST
-            Request request = new Request.Builder()
+            request = new Request.Builder()
                     .url(url)
                     .method("POST", RequestBody.create(null, new byte[0]))
                     .post(requestBody)
                     .build();
-            List return_list = new ArrayList<String>();
-            try {
-                Response response = client.newCall(request).execute();
 
-                Map<String, List<String>> headerList = response.headers().toMultimap();
-                return_list.add(headerList.get("Set-Cookie").get(0)); // token
-                return_list.add(headerList.get("Set-Cookie").get(1)); // laravel-session
-                return_list.add(response.body().string());
-                return return_list;
-                //return response.body().string();
+            try {
+                response = client.newCall(request).execute();
+                return response.body().string();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -99,40 +106,35 @@ public class LoginPage extends Fragment implements View.OnClickListener {
         }
 
         @Override
-        protected void onPostExecute(List<String> result) {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
+            Log.d("Login", result);
             try {
                 if (result != null) {
-                    JSONObject jsonObject = new JSONObject(result.get(2)); // get data from response
-                    String response_txt = "";
-                    if(jsonObject.has("error")) {
+                    JSONObject jsonObject = new JSONObject(result); // get data from response
 
-                        response_txt = jsonObject.getString("error");
-                        Toast.makeText(getActivity(), response_txt, Toast.LENGTH_LONG).show();
-                    }else{
-                        String authen = jsonObject.getString("token");
+                    if (jsonObject.has("error")) {
+                        loginBtn.loadingFailed();
+                        Toast.makeText(getActivity(), getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+                    } else {
+                        loginBtn.loadingSuccessful();
 
                         //Create cookie
-                        String session, token;
-                        token = result.get(0); // full token
-                        session = result.get(1); // full laravel
+                        Map<String, List<String>> headerList = response.headers().toMultimap();
+                        String token, session, authen, cookie;
+                        token = headerList.get("Set-Cookie").get(0);// token
+                        session = headerList.get("Set-Cookie").get(1);// laravel-session
                         token = token.substring(0, token.indexOf(';') + 1);
                         session = session.substring(0, session.indexOf(';'));
-
-                        String cookie = token + session;
+                        cookie = token + session;
+                        authen = jsonObject.getString("token"); //
 
                         //Share Preferences key: token, cookie = token + session
                         saveToSharedPrefs(authen, cookie);
 
+                        ((NavigationMain) getActivity()).loadFragment("DashboardPage");
                         new OkHttpHandler2().execute();
-
-                        response_txt = "Authentication successful.";
-                        Toast.makeText(getActivity(), response_txt,Toast.LENGTH_LONG).show();
-                        Log.d("LoginPage", cookie);
-                        ((NavigationMain)getActivity()).loadFragment("DashboardPage");
                     }
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -192,6 +194,14 @@ public class LoginPage extends Fragment implements View.OnClickListener {
             super.onPostExecute(data);
             Log.d("ProfilePage", data);
             saveToSharedPrefs(data);
+            try {
+                JSONArray jsonArray = new JSONArray(data);
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                Toast.makeText(getActivity(), getResources().getString(R.string.login_success) +
+                        jsonObject.getString("CONTRACTOR_NO"), Toast.LENGTH_SHORT).show(); // Change to name
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -200,9 +210,10 @@ public class LoginPage extends Fragment implements View.OnClickListener {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("user", data); //Have not convert to json yet
         editor.commit();
+
     }
 
-    public void saveToSharedPrefs(String authen, String cookie){
+    public void saveToSharedPrefs(String authen, String cookie) {
         SharedPreferences pref = getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("authen", authen);

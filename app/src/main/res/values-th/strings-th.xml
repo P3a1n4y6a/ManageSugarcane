@@ -6,6 +6,8 @@
     <string name="password">รหัสผ่าน</string>
     <string name="login_facebook">เข้าสู่ระบบด้วย Facebook</string>
     <string name="login_google_mail">เข้าสู่ระบบด้วย Google mail</string>
+    <string name="login_failed">การเข้าสู่ระบบล้มเหลว กรุณาตรวจสอบอีเมลและรหัสผ่านอีกครั้ง</string>
+    <string name="login_success">สวัสดีคุณ</string>
     <string name="dash_page">หน้าหลัก</string>
 
     <string name="farmer_page">ข้อมูลชาวไร่</string>
