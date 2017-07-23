@@ -311,4 +311,14 @@ public class SurveyMoreDetail extends Fragment {
             sendToEdit[11] = "C";
         }
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        FragmentManager fragMan = getChildFragmentManager();
+        mapFragment = (SupportMapFragment)fragMan.findFragmentById(R.id.map_frag);
+        if (mapFragment != null){
+            getFragmentManager().beginTransaction().remove(mapFragment).commit();
+        }
+    }
 }
