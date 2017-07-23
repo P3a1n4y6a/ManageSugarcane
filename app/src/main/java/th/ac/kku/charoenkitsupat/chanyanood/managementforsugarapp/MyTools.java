@@ -24,9 +24,9 @@ class MyTools {
     }
 
     void setSymbolQC(ImageView itemView, String status) {
-        if (status.equalsIgnoreCase("PASS")) {
+        if (status.equalsIgnoreCase("PASS") || status.equalsIgnoreCase("ผ่าน")) {
             itemView.setImageResource(R.drawable.ic_checked);
-        } else if (status.equalsIgnoreCase("DECLINE")) {
+        } else if (status.equalsIgnoreCase("DECLINE") || status.equalsIgnoreCase("ไม่ผ่าน")) {
             itemView.setImageResource(R.drawable.ic_cancel);
         } else {
             itemView.setImageResource(R.drawable.ic_dash);

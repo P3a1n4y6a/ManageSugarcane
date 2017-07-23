@@ -5,15 +5,16 @@ package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
  */
 
 public class PlantModel {
-    private String id, farmer_id, output;
+    private String id, farmer_id, output, qc;
     private String farmer_name, address, sub_district, district, province, zip_code;
     private String start_survey_date, survey_status, explorer_name, explorer_tel;
 
-    PlantModel (String id, String start_survey_date, String survey_status, String output) {
+    PlantModel (String id, String start_survey_date, String survey_status, String output, String qc) {
         this.id = id;
         this.start_survey_date = start_survey_date;
         this.survey_status = survey_status;
         this.output = output;
+        this.qc = qc;
     }
 
     public String getId() {
@@ -30,5 +31,9 @@ public class PlantModel {
 
     public String getOutput() {
         return output;
+    }
+
+    public String getQc() {
+        return qc;
     }
 }

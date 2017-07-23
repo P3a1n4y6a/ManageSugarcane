@@ -35,10 +35,9 @@ import okhttp3.Response;
 
 public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListener {
     View surveyQueueView;
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+    PlantRecyclerAdapter adapter;
     ArrayList<PlantModel> plantList;
 
     @Nullable
@@ -52,28 +51,16 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         return surveyQueueView;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.search_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.search);
-
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-
-        searchView.setOnQueryTextListener(this);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
     // Call library to connect api with http request protocol.
     private class OkHttpHandler extends AsyncTask<Object, Object, String> {
         private Context context;
         String cookie = loadPreferencesCookie(); // cookie is token + laravel-session header
         String authen = loadPreferencesAuthorization(); // token is header
+        String CONTRACTOR_ID = loadPreferencesNo();
 
         @Override
         protected String doInBackground(Object... params) {
-            final String URL = "http://188.166.191.60/api/v1/plant/PlantList";
+            final String URL = "http://188.166.191.60/api/v1/plant/contractor_get_plant_list?CONTRACTOR_NO=" + CONTRACTOR_ID;
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -104,8 +91,7 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         protected void onPostExecute(String data) {
             super.onPostExecute(data);
             Log.d("PlantList", data);
-            //saveToSharedPrefs(data);
-
+            saveToSharedPrefs(data);
             try {
                 if (data != null) {
                     JSONArray jsonArray = new JSONArray(data); //Convert string to JSON
@@ -116,7 +102,8 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
                         plantList.add(new PlantModel(jsonObject.getString("PLANT_ID"),
                                 jsonObject.getString("start_survey_date"),
                                 jsonObject.getString("survey_status"),
-                                "Na"));//Info of each farmer
+                                jsonObject.getString("est_total_cane_weight"),
+                                jsonObject.getString("calculate_qc")));//Info of each farmer
                     }
                     initRecycler(); //Create multiple cards
                 }
@@ -126,6 +113,19 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         }
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setOnQueryTextListener(this);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
     public void initRecycler(){
         recyclerView = (RecyclerView) surveyQueueView.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -133,6 +133,24 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
 
         adapter = new PlantRecyclerAdapter(plantList);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (adapter != null) adapter.getFilter().filter(newText);
+        return true;
+    }
+
+    public void saveToSharedPrefs(String data) {
+        SharedPreferences pref = getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("plant", data); //Have not convert to json yet
+        editor.commit();
     }
 
     private String loadPreferencesAuthorization() {
@@ -149,13 +167,9 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         return cookie;
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
+    private String loadPreferencesNo() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String no = preferences.getString("contractor_no", "Not found");
+        return no;
     }
 }

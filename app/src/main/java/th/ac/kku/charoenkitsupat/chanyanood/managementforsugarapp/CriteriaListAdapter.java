@@ -1,60 +1,51 @@
 package th.ac.kku.charoenkitsupat.chanyanood.managementforsugarapp;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * Created by Panya on 28/5/2560.
  */
 
-public class CriteriaListAdapter extends BaseAdapter {
-    private Context context;
-    private String[] data;
+public class CriteriaListAdapter extends RecyclerView.Adapter<CriteriaListAdapter.ViewHolder> {
+    private List<String> data;
+    private String[] criteria;
 
-    public CriteriaListAdapter(Context context, String[] data) {
-        this.context = context;
+    public CriteriaListAdapter(List<String> data, String[] criteria) {
         this.data = data;
+        this.criteria = criteria;
     }
 
     @Override
-    public int getCount() {
-        return data.length;
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.criteria_item, viewGroup, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.question.setText(data.get(position));
+        holder.answer.setText(criteria[position]);
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
+    public int getItemCount() {
+        return data.size();
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.list_item, null);
-            holder.question = (TextView) convertView.findViewById(R.id.criteriaLabel);
-            convertView.setTag(holder);
-
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-            holder.question.setText(data[position]);
-            return convertView;
-    }
-
-    public class ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView question;
+        TextView answer;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            question = (TextView) itemView.findViewById(R.id.question);
+            answer = (TextView) itemView.findViewById(R.id.answer);
+        }
     }
 }

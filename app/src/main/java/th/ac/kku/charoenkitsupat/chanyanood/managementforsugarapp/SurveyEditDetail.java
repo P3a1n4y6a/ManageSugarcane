@@ -7,16 +7,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
  * Created by Panya on 30/5/2560.
  */
 
-public class SurveyEditDetail extends Fragment implements View.OnClickListener {
+public class SurveyEditDetail extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     View editSurveyView;
-    Button cancelBtn, saveBtn, changeBtn; //action
+    Spinner qcSpin, gradeSpin;
+    Button saveBtn, changeBtn; //action
+    String[] sendToApi;
 
     @Nullable
     @Override
@@ -24,29 +29,52 @@ public class SurveyEditDetail extends Fragment implements View.OnClickListener {
         editSurveyView = inflater.inflate(R.layout.survey_edit_detail, container, false);
         ((NavigationMain) getActivity()).getSupportActionBar().show();
 
-        initPreviousData(); //Get all data to show on edit text
+        initSpinner();
         initButton();
+        initPreviousData(); //Get all data to show on edit text
 
         return editSurveyView;
     }
 
-    public void initPreviousData() {
-        String[] message = getArguments().getStringArray("FromMoreDetail");
-        TextView textData;
-        int[] viewId = {R.id.nameData, R.id.idData, R.id.plantAddressData, R.id.dateData
-                , R.id.outputData, R.id.explorerName};
-        for (int i = 0; i < viewId.length; i++) {
-            textData = (TextView) editSurveyView.findViewById(viewId[i]);
-            textData.setText(message[i]);
+    public void initSpinner() {
+        qcSpin = (Spinner) editSurveyView.findViewById(R.id.qcSpin);
+        gradeSpin = (Spinner) editSurveyView.findViewById(R.id.gradeSpin);
+
+        String[] qc = getResources().getStringArray(R.array.real_qc);
+        ArrayAdapter<String> adapterQc = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line, qc);
+        qcSpin.setAdapter(adapterQc);
+
+        String[] grade = getResources().getStringArray(R.array.grade);
+        ArrayAdapter<String> adapterGrade = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line, grade);
+        gradeSpin.setAdapter(adapterGrade);
+
+        qcSpin.setOnItemSelectedListener(this);
+        gradeSpin.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (view.getId()) {
+            case R.id.qcSpin:
+
+                break;
+            case R.id.gradeSpin:
+
+                break;
         }
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     public void initButton() {
-        cancelBtn = (Button) editSurveyView.findViewById(R.id.cancelButton);
         saveBtn = (Button) editSurveyView.findViewById(R.id.saveButton);
         changeBtn = (Button) editSurveyView.findViewById(R.id.setDate);
 
-        cancelBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
         changeBtn.setOnClickListener(this);
     }
@@ -54,9 +82,6 @@ public class SurveyEditDetail extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.cancelButton:
-                getFragmentManager().popBackStack();
-                break;
             case R.id.saveButton:
 
                 break;
@@ -67,5 +92,35 @@ public class SurveyEditDetail extends Fragment implements View.OnClickListener {
                 dialog.show(fragmentTransaction, "DatePicker");
                 break;
         }
+    }
+
+    public void initPreviousData() {
+        String[] message = getArguments().getStringArray("FromSurveyMoreDetail");
+        TextView textData;
+        int[] viewId = {R.id.idData, R.id.outputData, R.id.dateData, R.id.qcSpin, R.id.nameData,
+                R.id.addressData, R.id.subDtName, R.id.districtName, R.id.provinceName,
+                R.id.explorerName, R.id.explorerTelData, R.id.gradeSpin};
+        int i = 0;
+        while (i < viewId.length) {
+            if (i == 3) {
+                qcSpin.setSelection(1);
+            } else if (i == 11) {
+                gradeSpin.setSelection(getIndex(gradeSpin, message[i]));
+            }else {
+                textData = (TextView) editSurveyView.findViewById(viewId[i]);
+                textData.setText(message[i]);
+            }
+            i++;
+        }
+    }
+
+    private int getIndex(Spinner spinner, String defaultValue){
+        int index = 0;
+        for (int i = 0; i < spinner.getCount(); i++){
+            if (spinner.getItemAtPosition(i).equals(defaultValue)){
+                index = i;
+            }
+        }
+        return index;
     }
 }

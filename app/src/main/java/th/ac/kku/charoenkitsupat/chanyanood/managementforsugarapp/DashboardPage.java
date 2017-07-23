@@ -24,7 +24,7 @@ public class DashboardPage extends Fragment {
     Context context;
 
     int[] icId = {R.drawable.ic_color_farmer, R.drawable.ic_color_survey, R.drawable.ic_color_zone,
-            R.drawable.ic_color_cost};
+            R.drawable.ic_color_cost, R.drawable.ic_color_team};
 
     public DashboardPage() {}
 
@@ -47,11 +47,12 @@ public class DashboardPage extends Fragment {
     }
 
     public String[] getStringXML(){
-        String[] title = new String[4];
+        String[] title = new String[5];
         title[0] = getResources().getString(R.string.farmer_page);
         title[1] = getResources().getString(R.string.survey_queue_page);
         title[2] = getResources().getString(R.string.zone_page);
         title[3] = getResources().getString(R.string.cost_page);
+        title[4] = getResources().getString(R.string.manage_employee);
         return title;
     }
 
@@ -71,6 +72,8 @@ public class DashboardPage extends Fragment {
                     case 2: ((NavigationMain)getActivity()).loadFragment("ZonePage");
                         break;
                     case 3: ((NavigationMain)getActivity()).loadFragment("CostIntoPage");
+                        break;
+                    case 4: ((NavigationMain)getActivity()).loadFragment("ManagementPage");
                         break;
                 }
             }

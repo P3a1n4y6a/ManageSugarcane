@@ -90,7 +90,7 @@ public class FarmerMoreDetail extends Fragment {
             sendToEdit[5] = jsonObject.getString("province");
             sendToEdit[6] = jsonObject.getString("zip_code");
             sendToEdit[7] = jsonObject.getString("tel_no");
-            sendToEdit[8] = jsonObject.getString("district_chief");
+            sendToEdit[8] = jsonObject.getString("district_chief_name");
             sendToEdit[9] = jsonObject.getString("district_chief_tel");
             sendToEdit[10] = jsonObject.getString("email");
 
@@ -119,10 +119,12 @@ public class FarmerMoreDetail extends Fragment {
         private Context context;
         String cookie = loadPreferencesCookie(); // cookie is token + laravel-session header
         String authen = loadPreferencesAuthorization(); // token is header
+        String CONTRACTOR_ID = loadPreferencesNo();
 
         @Override
         protected String doInBackground(Object... params) {
-            final String URL = "http://188.166.191.60/api/v1/plant/PlantList?FARMER_ID=" + sendToEdit[0];
+            final String URL = "http://188.166.191.60/api/v1/plant/contractor_get_plant_list?CONTRACTOR_NO=" +
+                    CONTRACTOR_ID + "&FARMER_ID=" + sendToEdit[0];
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -165,7 +167,8 @@ public class FarmerMoreDetail extends Fragment {
                         plantList.add(new PlantModel(jsonObject.getString("PLANT_ID"),
                                 jsonObject.getString("start_survey_date"),
                                 jsonObject.getString("survey_status"),
-                                "Na"));//Info of each farmer
+                                jsonObject.getString("est_total_cane_weight"),
+                                jsonObject.getString("calculate_qc")));//Info of each farmer
                     }
                     initRecycler(); //Create multiple cards
                 }
@@ -204,5 +207,11 @@ public class FarmerMoreDetail extends Fragment {
         String[] separatedData = cookie.split(";");
         cookie = separatedData[0];
         return cookie;
+    }
+
+    private String loadPreferencesNo() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String no = preferences.getString("contractor_no", "Not found");
+        return no;
     }
 }

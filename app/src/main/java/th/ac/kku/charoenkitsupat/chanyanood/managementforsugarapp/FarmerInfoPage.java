@@ -63,7 +63,8 @@ public class FarmerInfoPage extends Fragment implements SearchView.OnQueryTextLi
 
         @Override
         protected String doInBackground(Object... params) {
-            final String URL = "http://188.166.191.60/api/v1/farmer";
+            String CONTRACTOR_NO = loadPreferencesNo();
+            final String URL = "http://188.166.191.60/api/v1/farmer/contractor_get_farmer_list?CONTRACTOR_NO=" + CONTRACTOR_NO;
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -93,7 +94,7 @@ public class FarmerInfoPage extends Fragment implements SearchView.OnQueryTextLi
         @Override
         protected void onPostExecute(String data) {
             super.onPostExecute(data);
-            //Log.d("FarmerInfo", data);
+            Log.d("FarmerInfo", data);
             saveToSharedPrefs(data);
             try {
                 if (data != null) {
@@ -151,6 +152,12 @@ public class FarmerInfoPage extends Fragment implements SearchView.OnQueryTextLi
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("farmer", data); //Have not convert to json yet
         editor.commit();
+    }
+
+    private String loadPreferencesNo() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String no = preferences.getString("contractor_no", "Not found");
+        return no;
     }
 
     private String loadPreferencesAuthorization() {

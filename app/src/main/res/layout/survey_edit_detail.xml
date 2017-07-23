@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhiteBackground"
-    android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:id="@+id/firstLayout"
@@ -12,6 +10,23 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/id"
+            style="@style/SmallGrayLightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/plant_id" />
+
+        <TextView
+            android:id="@+id/idData"
+            style="@style/MediumGrayLightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/name"
@@ -30,33 +45,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp" />
 
-        <TextView
-            android:id="@+id/id"
-            style="@style/SmallGrayLightText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/plant_id" />
-
-        <TextView
-            android:id="@+id/idData"
-            style="@style/MediumGrayLightText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/secondLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/plantAddress"
+            android:id="@+id/addressLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -64,60 +54,59 @@
             app:hintTextAppearance="@style/SmallGreenDarkText">
 
             <EditText
-                android:id="@+id/plantAddressData"
+                android:id="@+id/addressData"
                 style="@style/MediumGrayLightText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/plant_address" />
+                android:hint="@string/address" />
         </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:id="@+id/date"
-            style="@style/SmallGreenDarkText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/survey_date" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/dateData"
-                style="@style/LargeGrayLightText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp" />
-
-            <Button
-                android:id="@+id/setDate"
-                style="@style/MediumGreenLightButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:text="@string/change_button" />
-        </RelativeLayout>
-
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/output"
+            android:id="@+id/subDtLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             app:hintTextAppearance="@style/SmallGreenDarkText">
 
             <EditText
-                android:id="@+id/outputData"
+                android:id="@+id/subDtName"
                 style="@style/MediumGrayLightText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/output" />
+                android:hint="@string/sub_district" />
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/districtLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:hintTextAppearance="@style/SmallGreenDarkText">
+
+            <EditText
+                android:id="@+id/districtName"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/district" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/provinceLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:hintTextAppearance="@style/SmallGreenDarkText">
+
+            <EditText
+                android:id="@+id/provinceName"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/province" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -137,32 +126,103 @@
                 android:hint="@string/explorer_chief" />
 
         </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/thirdLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/cancelButton"
-            style="@style/MediumRedButton"
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/explorerLabel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:text="@string/cancel_button" />
+            android:layout_margin="10dp"
+            app:hintTextAppearance="@style/SmallGreenDarkText">
+
+            <EditText
+                android:id="@+id/explorerTelData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/explorer_chief_tel" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/SmallGreenDarkText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/survey_date" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/dateData"
+                style="@style/LargeGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/setDate"
+                style="@style/MediumGreenLightButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="2"
+                android:text="@string/change_button" />
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:hintTextAppearance="@style/SmallGreenDarkText">
+
+            <EditText
+                android:id="@+id/outputData"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/output" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/gradeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/gradeSpin"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Spinner
+                android:id="@+id/qcSpin"
+                style="@style/MediumGrayLightText"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/saveButton"
             style="@style/MediumGreenButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
             android:text="@string/save_button" />
     </LinearLayout>
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

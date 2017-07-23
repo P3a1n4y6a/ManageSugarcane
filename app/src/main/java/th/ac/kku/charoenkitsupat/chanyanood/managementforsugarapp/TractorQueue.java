@@ -34,7 +34,7 @@ public class TractorQueue extends Fragment implements SearchView.OnQueryTextList
         ((NavigationMain)getActivity()).getSupportActionBar().show();
         getActivity().setTitle(R.string.survey_queue_page);
         setHasOptionsMenu(true);
-        initRecycler();
+        //initRecycler();
         return tractorQueueView;
     }
 
@@ -44,7 +44,7 @@ public class TractorQueue extends Fragment implements SearchView.OnQueryTextList
         recyclerView.setLayoutManager(layoutManager);
 
         String title = getResources().getString(R.string.tractor_id);
-        adapter = new QueueRecyclerAdapter(title, tractorId);
+        //adapter = new QueueRecyclerAdapter(title, tractorId);
         recyclerView.setAdapter(adapter);
     }
 

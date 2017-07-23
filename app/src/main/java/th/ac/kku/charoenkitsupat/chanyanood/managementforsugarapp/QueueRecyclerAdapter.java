@@ -6,19 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Panya on 26/5/2560.
  */
 
 class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdapter.ViewHolder> {
-    private String[] data;
+    ArrayList<CutterModel> cutterList;
     private static String id;
     private String title;
     MyTools tools = new MyTools();
 
-    QueueRecyclerAdapter(String title, String[] data) {
+    QueueRecyclerAdapter(String title, ArrayList<CutterModel> cutterList) {
         this.title = title;
-        this.data = data;
+        this.cutterList = cutterList;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,12 +35,12 @@ class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdapter.Vie
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
+                    /*int position = getAdapterPosition();
                     id = data[position];
                     if(title.equalsIgnoreCase("หมายเลขรถตัด:"))
                         tools.replaceFragment(itemView, new TotalTractor());
                     else if (title.equalsIgnoreCase("หมายเลขรถบรรทุก:"))
-                        tools.replaceFragment(itemView, new TotalHarvest());
+                        tools.replaceFragment(itemView, new TotalHarvest());*/
                 }
             });
         }
@@ -53,12 +55,12 @@ class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdapter.Vie
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         viewHolder.itemTitle.setText(title);
-        viewHolder.itemCut.setText(data[i]);
+        //viewHolder.itemCut.setText(data[i]);
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return cutterList.size();
     }
 
     public static String getId() {

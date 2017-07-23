@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_cost"
             android:title="@string/cost_page" />
         <item
+            android:id="@+id/nav_management"
+            android:icon="@drawable/ic_team"
+            android:title="@string/manage_employee" />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
             android:title="@string/logout"/>

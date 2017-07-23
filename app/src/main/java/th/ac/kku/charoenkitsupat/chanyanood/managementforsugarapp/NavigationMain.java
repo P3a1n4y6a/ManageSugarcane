@@ -70,11 +70,20 @@ public class NavigationMain extends AppCompatActivity
             TextView name = (TextView) headerLayout.findViewById(R.id.name);
             TextView email = (TextView) headerLayout.findViewById(R.id.email);
 
+            saveToSharedPrefs(jsonObject.getString("CONTRACTOR_NO"));
             name.setText(jsonObject.getString("full_name"));
             email.setText(jsonObject.getString("email"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void saveToSharedPrefs(String data) {
+        SharedPreferences pref = getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("contractor_no", data); //Have not convert to json yet
+        editor.commit();
+
     }
 
     private String loadPreferencesUser() {
@@ -146,6 +155,8 @@ public class NavigationMain extends AppCompatActivity
             loadFragment("ZonePage");
         } else if (id == R.id.nav_cost) {
             loadFragment("CostIntoPage");
+        }else if (id == R.id.nav_management) {
+            loadFragment("ManagementPage");
         } else if (id == R.id.nav_logout) {
             loadFragment("LoginPage");
         }
@@ -185,6 +196,9 @@ public class NavigationMain extends AppCompatActivity
                 break;
             case "CostIntoPage":
                 loadFragment.replace(R.id.content_frame, new CostInfoPage()).addToBackStack(null).commit();
+                break;
+            case "ManagementPage":
+                loadFragment.replace(R.id.content_frame, new ManageEmployeePage()).addToBackStack(null).commit();
                 break;
             case "ProfilePage":
                 loadFragment.replace(R.id.content_frame, new ProfilePage()).addToBackStack(null).commit();
