@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/background"
@@ -21,53 +21,53 @@
             android:id="@+id/logo"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/sugarcane"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"/>
+            android:background="@drawable/sugarcane" />
 
         <TextView
             android:id="@+id/bigAppName"
+            style="@style/LargeDarkGrayText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sub_app_name"
-            android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            style="@style/LargeDarkGrayText"/>
+            android:gravity="center_horizontal"
+            android:text="@string/sub_app_name" />
 
         <TextView
             android:id="@+id/subAppName"
+            style="@style/MediumBoldGrayDarkText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            style="@style/MediumBoldGrayDarkText" />
+            android:gravity="center_horizontal"
+            android:text="@string/app_name" />
 
         <EditText
             android:id="@+id/userMail"
+            style="@style/MediumGrayLightText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/email"
-            style="@style/MediumGrayLightText"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/blank_email"
             android:elevation="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:hint="@string/email"
             android:paddingLeft="60dp" />
 
         <EditText
             android:id="@+id/userKey"
+            style="@style/MediumGrayLightText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            style="@style/MediumGrayLightText"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/blank_password"
             android:elevation="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
             android:paddingLeft="60dp" />
 
         <!--Button
@@ -80,15 +80,24 @@
 
         <com.dx.dxloadingbutton.lib.LoadingButton
             android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            app:lb_btnColor="@color/colorPrimary"
+            app:lb_btnRippleColor="@color/colorPrimary"
+            app:lb_btnText="@string/login_button"
+            app:lb_resetAfterFailed="true" />
+
+        <TextView
+            android:id="@+id/register"
+            style="@style/MediumGreenDarkText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            app:lb_btnColor="@color/colorPrimary"
-            app:lb_resetAfterFailed="true"
-            app:lb_btnRippleColor="@color/colorPrimary"
-            app:lb_btnText="@string/login_button" />
+            android:gravity="center_horizontal"
+            android:text="@string/register" />
     </LinearLayout>
 </RelativeLayout>

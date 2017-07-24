@@ -88,7 +88,7 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/white_btn"
+                    android:background="@drawable/white_background"
                     android:elevation="5dp"
                     android:orientation="vertical"
                     android:padding="4dp">
@@ -118,7 +118,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/white_btn"
+                    android:background="@drawable/white_background"
                     android:elevation="5dp"
                     android:orientation="vertical"
                     android:padding="4dp">

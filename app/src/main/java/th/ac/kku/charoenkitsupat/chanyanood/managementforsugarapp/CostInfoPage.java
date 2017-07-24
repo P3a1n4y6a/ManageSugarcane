@@ -16,10 +16,10 @@ import android.view.ViewGroup;
  */
 
 public class CostInfoPage extends Fragment {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-
+    ViewPager viewPager;
+    TabLayout tabLayout;
     View costInfoView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

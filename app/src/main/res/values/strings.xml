@@ -7,6 +7,7 @@
     <string name="login_google_mail">Log in with Google mail</string>
     <string name="login_failed">"Login failed,please check email and password"</string>
     <string name="login_success">Hi,</string>
+    <string name="register"><u>Click here to SIGN UP</u></string>
     <string name="dash_page">Dashboard</string>
 
     <string name="farmer_page">Farmer Info</string>
@@ -17,9 +18,23 @@
     <string name="cost_page">Cost Info</string>
     <string name="profile_page">Profile</string>
     <string name="manage_employee">Management Employee</string>
+    <string name="add_emp_page">Add Employee Page</string>
     <string name="logout">Log out</string>
 
-    <string name="company">Contractor company</string>
+    <string name="error_blank">Can\'t be blank</string>
+    <string name="error_suggest">You have not fill out staff id or password</string>
+    <string name="selected_depart">Select department</string>
+    <string name="survey_emp">Explorer</string>
+    <string name="cutter_emp">Cutter</string>
+    <string name="tractor_emp">Tractor</string>
+    <string name="assert_rm">Do you want to remove this account?</string>
+
+    <string name="photo">Edit photo</string>
+    <string name="title">Title</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">First name</string>
+    <string name="staff_id">Staff id</string>
+    <string name="company">Company</string>
     <string name="depart">Department</string>
     <string name="search_button">Search</string>
     <string name="name">Name:</string>
@@ -45,6 +60,8 @@
     <string name="save_button">Save</string>
     <string name="update_button">Update</string>
     <string name="compare_button">Compare with estimated cost</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
 
     <string name="plant">Farmer\'s Plantation</string>
     <string name="plant_id">Plant ID:</string>

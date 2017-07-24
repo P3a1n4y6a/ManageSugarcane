@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dx.dxloadingbutton.lib.LoadingButton;
@@ -37,6 +38,7 @@ public class LoginPage extends Fragment {
     View loginView;
     //Button loginBtn;
     LoadingButton loginBtn;
+    TextView sign_up;
     EditText email, password;
     String email_str, password_str;
 
@@ -46,8 +48,17 @@ public class LoginPage extends Fragment {
         loginView = inflater.inflate(R.layout.login_page, container, false);
         ((NavigationMain) getActivity()).getSupportActionBar().hide();
 
+        sign_up = (TextView)loginView.findViewById(R.id.register);
         email = (EditText) loginView.findViewById(R.id.userMail);
         password = (EditText) loginView.findViewById(R.id.userKey);
+
+        sign_up.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v1) {
+                ((NavigationMain) getActivity()).loadFragment("CreateContractorPage");
+            }
+        });
 
         loginBtn = (LoadingButton) loginView.findViewById(R.id.login);
         //while login failed, reset view to button with animation
@@ -61,17 +72,8 @@ public class LoginPage extends Fragment {
                 new OkHttpHandler().execute();
             }
         });
-        //loginBtn = (Button) loginView.findViewById(R.id.login);
-        //loginBtn.setOnClickListener(this);
         return loginView;
     }
-
-    /*@Override
-    public void onClick(View v) {
-        email_str = email.getText().toString();
-        password_str = password.getText().toString();
-        new OkHttpHandler().execute();
-    }*/
 
     // Call library to connect api with http request protocol.
     private class OkHttpHandler extends AsyncTask<Object, Object, String> {

@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             app:hintTextAppearance="@style/SmallGreenDarkText">
 
             <EditText
@@ -203,6 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/white_background"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="5dp"/>
 
@@ -211,6 +213,7 @@
                 style="@style/MediumGrayLightText"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
+                android:background="@drawable/white_background"
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="20dp"/>

@@ -1,0 +1,63 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/idLabel"
+            style="@style/MediumGrayLightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/employee_id" />
+
+        <TextView
+            android:id="@+id/idData"
+            style="@style/MediumGrayLightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/idLabel"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/passwordLabel"
+            style="@style/MediumGrayLightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/idLabel"
+            android:layout_below="@id/idLabel"
+            android:paddingBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/employee_password" />
+
+        <TextView
+            android:id="@+id/passwordData"
+            style="@style/MediumGrayLightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idLabel"
+            android:layout_toRightOf="@id/passwordLabel"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/removeBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:background="@color/colorWhiteBackground"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_bin"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

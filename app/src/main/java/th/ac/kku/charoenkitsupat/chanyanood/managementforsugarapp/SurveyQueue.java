@@ -48,6 +48,7 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
         getActivity().setTitle(R.string.survey_queue_page);
         setHasOptionsMenu(true);
         new OkHttpHandler().execute();
+        Log.d("Plant list", loadPreferencesNo());
         return surveyQueueView;
     }
 
@@ -100,8 +101,8 @@ public class SurveyQueue extends Fragment implements SearchView.OnQueryTextListe
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i); // get JSON at index
                         plantList.add(new PlantModel(jsonObject.getString("PLANT_ID"),
-                                jsonObject.getString("start_survey_date"),
-                                jsonObject.getString("survey_status"),
+                                jsonObject.getString("REAL_SURVEY_DATE"),
+                                jsonObject.getString("STATUS"),
                                 jsonObject.getString("est_total_cane_weight"),
                                 jsonObject.getString("calculate_qc")));//Info of each farmer
                     }

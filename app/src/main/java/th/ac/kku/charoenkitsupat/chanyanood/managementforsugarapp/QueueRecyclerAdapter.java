@@ -6,22 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 /**
  * Created by Panya on 26/5/2560.
  */
 
 class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdapter.ViewHolder> {
-    ArrayList<CutterModel> cutterList;
+    //ArrayList<CutterModel> cutterList;
     private static String id;
     private String title;
     MyTools tools = new MyTools();
 
-    QueueRecyclerAdapter(String title, ArrayList<CutterModel> cutterList) {
+    /*QueueRecyclerAdapter(String title, ArrayList<CutterModel> cutterList) {
         this.title = title;
         this.cutterList = cutterList;
-    }
+    }*/
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView itemCut;
@@ -60,7 +58,7 @@ class QueueRecyclerAdapter extends RecyclerView.Adapter<QueueRecyclerAdapter.Vie
 
     @Override
     public int getItemCount() {
-        return cutterList.size();
+        return 0;//cutterList.size();
     }
 
     public static String getId() {

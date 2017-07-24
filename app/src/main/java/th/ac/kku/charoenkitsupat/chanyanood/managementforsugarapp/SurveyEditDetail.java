@@ -103,7 +103,7 @@ public class SurveyEditDetail extends Fragment implements View.OnClickListener, 
         int i = 0;
         while (i < viewId.length) {
             if (i == 3) {
-                qcSpin.setSelection(1);
+                qcSpin.setSelection(2);
             } else if (i == 11) {
                 gradeSpin.setSelection(getIndex(gradeSpin, message[i]));
             }else {

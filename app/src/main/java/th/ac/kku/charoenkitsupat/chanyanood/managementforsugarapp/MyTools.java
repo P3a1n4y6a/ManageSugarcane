@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * Created by Panya on 30/5/2560.
@@ -31,18 +30,6 @@ class MyTools {
         } else {
             itemView.setImageResource(R.drawable.ic_dash);
         }
-    }
-
-    String[] getAllData(int[] viewId, View v) {
-        //All data that is in farmer_more_detail layout and farmer_show_detail layout
-        String[] data = new String[10];
-        TextView textData;
-
-        for(int i = 0; i < viewId.length; i++){
-            textData = (TextView) v.findViewById(viewId[i]);
-            data[i] = textData.getText().toString();
-        }
-        return data; //Array keeps 6 data and return to array sending data
     }
 
     /*public String loadPreferencesAuthorization(Context context) {

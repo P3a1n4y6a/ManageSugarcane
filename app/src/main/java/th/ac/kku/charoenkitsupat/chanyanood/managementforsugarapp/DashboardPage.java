@@ -79,6 +79,4 @@ public class DashboardPage extends Fragment {
             }
         });
     }
-
-
 }

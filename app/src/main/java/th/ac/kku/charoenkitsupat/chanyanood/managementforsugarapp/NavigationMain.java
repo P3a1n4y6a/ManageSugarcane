@@ -155,7 +155,7 @@ public class NavigationMain extends AppCompatActivity
             loadFragment("ZonePage");
         } else if (id == R.id.nav_cost) {
             loadFragment("CostIntoPage");
-        }else if (id == R.id.nav_management) {
+        } else if (id == R.id.nav_management) {
             loadFragment("ManagementPage");
         } else if (id == R.id.nav_logout) {
             loadFragment("LoginPage");
@@ -182,6 +182,9 @@ public class NavigationMain extends AppCompatActivity
     public void loadFragment(String Fragment){
         FragmentTransaction loadFragment = getSupportFragmentManager().beginTransaction();
         switch (Fragment) {
+            case "CreateContractorPage":
+                loadFragment.replace(R.id.content_frame, new CreateContractorPage()).addToBackStack(null).commit();
+                break;
             case "DashboardPage":
                 loadFragment.replace(R.id.content_frame, new DashboardPage()).addToBackStack(null).commit();
                 break;
@@ -217,6 +220,15 @@ public class NavigationMain extends AppCompatActivity
                 break;
             case "LoginPage":
                 loadFragment.replace(R.id.content_frame, new LoginPage()).addToBackStack(null).commit();
+                break;
+            case "SurveyManagementPage":
+                loadFragment.replace(R.id.content_frame, new SurveyManagement()).addToBackStack(null).commit();
+                break;
+            case "CutterManagementPage":
+                loadFragment.replace(R.id.content_frame, new CutterManagement()).addToBackStack(null).commit();
+                break;
+            case "TractorManagementPage":
+                loadFragment.replace(R.id.content_frame, new TractorManagement()).addToBackStack(null).commit();
                 break;
         }
     }

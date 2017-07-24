@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,32 +20,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by Panya on 27/5/2560.
+ * Created by Panya on 23/7/2560.
  */
 
-public class HarvestQueue extends Fragment implements SearchView.OnQueryTextListener {
-    View harvestQueueView;
+public class CutterManagement extends Fragment implements SearchView.OnQueryTextListener {
+    View cutterEmpView;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-    //ArrayList<CutterModel> cutterList;
+    ArrayList<EmployeeModel> cutterList;
+    MyTools tools = new MyTools();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        harvestQueueView = inflater.inflate(R.layout.query_page, container, false);
+        cutterEmpView = inflater.inflate(R.layout.query_add_page, container, false);
         ((NavigationMain)getActivity()).getSupportActionBar().show();
-        getActivity().setTitle(R.string.survey_queue_page);
+        //getActivity().setTitle(R.string.survey_queue_page);
         setHasOptionsMenu(true);
         new OkHttpHandler().execute();
-        return harvestQueueView;
+        initFloatingBtn();
+        return cutterEmpView;
     }
 
     @Override
@@ -60,21 +68,34 @@ public class HarvestQueue extends Fragment implements SearchView.OnQueryTextList
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private String loadPreferencesNo() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
-        String data = preferences.getString("contractor_no", "Not found");
-        return data;
+    public void initFloatingBtn() {
+        FloatingActionButton editBtn = (FloatingActionButton) cutterEmpView.findViewById(R.id.addBtn);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tools.replaceFragment(v, new CreateEmployeePage());
+            }
+        });
     }
 
-    private class OkHttpHandler extends AsyncTask<Object, Object, String> {
-        private Context context;
+    public void initRecycler(ArrayList<EmployeeModel> arrayList){
+        recyclerView = (RecyclerView) cutterEmpView.findViewById(R.id.recyclerView);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+
+        //String title = getResources().getString(R.string.cut_id);
+        adapter = new EmployeeRecyclerAdapter("cutter", arrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    public class OkHttpHandler extends AsyncTask<Object, Object, String> {
+        String CONTRACTOR_NO = loadPreferencesNo();
         String cookie = loadPreferencesCookie(); // cookie is token + laravel-session header
         String authen = loadPreferencesAuthorization(); // token is header
 
         @Override
         protected String doInBackground(Object... params) {
-            String CONTRACTOR_NO = loadPreferencesNo();
-            final String URL = "http://188.166.191.60/api/v1/cutter/get_cutting_queue?CONTRACTOR_NO=" + CONTRACTOR_NO;
+            final String URL = "http://188.166.191.60/api/v1/contractor/get_user_list?contractor_no="
+                    + CONTRACTOR_NO + "&department=cutter";
 
             OkHttpClient okHttpClient = new OkHttpClient();
             Request.Builder builder = new Request.Builder(); // Create request
@@ -102,24 +123,25 @@ public class HarvestQueue extends Fragment implements SearchView.OnQueryTextList
         * Use result from doInBackground()
         * */
         @Override
-        protected void onPostExecute(String data) {
-            super.onPostExecute(data);
-            Log.d("CutterList", data);
-            //saveToSharedPrefs(data);
-            /*try {
-                if (data != null) {
-                    JSONArray jsonArray = new JSONArray(data); //Convert string to JSON
+        protected void onPostExecute(String surveyAccount) {
+            super.onPostExecute(surveyAccount);
+            Log.d("CutterAccount", surveyAccount);
+            if (surveyAccount != null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(surveyAccount);
+                    // Getting JSON Array node
+                    JSONArray result = jsonObject.getJSONArray("result");
                     cutterList = new ArrayList<>();
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i); // get JSON at index
-                        cutterList.add();
+                    for (int i = 0; i < result.length(); i++) {
+                        JSONObject item = result.getJSONObject(i);
+                        cutterList.add(new EmployeeModel(item.getString("CUTTER_ID")
+                                , item.getString("PASSWORD")));
                     }
-                    initRecycler(); //Create multiple cards
+                    initRecycler(cutterList);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
+            }
         }
     }
 
@@ -137,14 +159,10 @@ public class HarvestQueue extends Fragment implements SearchView.OnQueryTextList
         return cookie;
     }
 
-    public void initRecycler(){
-        recyclerView = (RecyclerView) harvestQueueView.findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-
-        String title = getResources().getString(R.string.cut_id);
-        //adapter = new QueueRecyclerAdapter(title, cutterList);
-        recyclerView.setAdapter(adapter);
+    private String loadPreferencesNo() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("APP_PARAMS", Context.MODE_PRIVATE);
+        String data = preferences.getString("contractor_no", "Not found");
+        return data;
     }
 
     @Override

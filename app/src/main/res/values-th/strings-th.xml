@@ -8,6 +8,7 @@
     <string name="login_google_mail">เข้าสู่ระบบด้วย Google mail</string>
     <string name="login_failed">การเข้าสู่ระบบล้มเหลว กรุณาตรวจสอบอีเมลและรหัสผ่านอีกครั้ง</string>
     <string name="login_success">สวัสดีคุณ</string>
+    <string name="register"><u>กดที่นี่เพื่อลงทะเบียน</u></string>
     <string name="dash_page">หน้าหลัก</string>
 
     <string name="farmer_page">ข้อมูลชาวไร่</string>
@@ -18,8 +19,14 @@
     <string name="cost_page">ข้อมูลค่าใช้จ่าย</string>
     <string name="profile_page">ข้อมูลส่วนตัวของผู้ใช้</string>
     <string name="manage_employee">การจัดการลูกจ้าง</string>
+    <string name="add_emp_page">เพิ่มบัญชีของลูกจ้าง</string>
     <string name="logout">ออกจากระบบ</string>
 
+    <string name="photo">เปลี่ยนรูปประจำตัว</string>
+    <string name="title">คำนำหน้า</string>
+    <string name="first_name">ชื่อ</string>
+    <string name="last_name">นามสกุล</string>
+    <string name="staff_id">หมายเลขผู้ดูแล</string>
     <string name="company">บริษัทผู้รับเหมา</string>
     <string name="depart">แผนก</string>
     <string name="search_button">ค้นหา</string>
@@ -37,6 +44,14 @@
     <string name="chief_name">หัวหน้าตำบล:</string>
     <string name="chief_tel">เบอร์โทรหัวหน้าตำบล:</string>
 
+    <string name="error_blank">กรุณากรอกข้อมูล</string>
+    <string name="error_suggest">คุณไม่ได้กรอกหมายเลขพนักงานหรือรหัสผ่าน</string>
+    <string name="selected_depart">เลือกแผนก</string>
+    <string name="survey_emp">คนสำรวจ</string>
+    <string name="cutter_emp">รถตัด</string>
+    <string name="tractor_emp">รถแทรกเตอร์</string>
+    <string name="assert_rm">คุณต้องการลบใช่หรือไม่</string>
+
     <string name="login_button">เข้าสู่ระบบ</string>
     <string name="show_button">แสดงรายละเอียด</string>
     <string name="hide_button">ซ่อนรายละเอียด</string>
@@ -46,6 +61,8 @@
     <string name="save_button">บันทึก</string>
     <string name="update_button">อัพเดท</string>
     <string name="compare_button">เปรียบเทียบราคาประมาณ</string>
+    <string name="yes_button">ใช่</string>
+    <string name="no_button">ไม่</string>
 
     <string name="plant">แปลงทั้งหมดของชาวไร่</string>
     <string name="plant_id">หมายเลขแปลง:</string>
